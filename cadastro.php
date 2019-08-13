@@ -22,7 +22,7 @@
 
         <div class="row">
           <div class="col-md-12">
-            <form class="form-cadastro" method="POST" enctype="multipart/form-data">
+            <form id="adicionar" class="form-cadastro" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-3">
@@ -55,6 +55,10 @@
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+              </div>
+              <div class="form-group">
+                <div class="retorno alert alert-success"></div>
+                <div class="retorno alert alert-danger"></div>
               </div>
             </form>
           </div>
