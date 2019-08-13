@@ -5,7 +5,7 @@ require '../config/config.php';
 
 $sucesso = array(
   'status' => 'sucesso',
-  'mensagem' => 'Condidado cadastrado com sucesso.'
+  'mensagem' => 'Candidato cadastrado com sucesso.'
 );
 
 $erro = array(
