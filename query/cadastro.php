@@ -31,6 +31,7 @@ $PDO = db_connect();
 $foto = $_FILES['foto'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
+$data = $_POST['data'];
 
 if(isset($nome)){
 
@@ -74,11 +75,13 @@ if(isset($nome)){
     cadastro(
       foto, 
       nome, 
-      email
+      email,
+      data
     )VALUES(
       :foto, 
       :nome, 
-      :email
+      :email,
+      :data
     )";
 
   if($enviado){
@@ -87,6 +90,7 @@ if(isset($nome)){
       $stmt->bindParam(':foto', $URL_img);
       $stmt->bindParam(':nome', $nome);
       $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':data', $data);
 
       if ($stmt->execute()){
         echo json_encode($sucesso);

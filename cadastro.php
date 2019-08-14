@@ -1,20 +1,19 @@
-<?php include 'includes/header.php'; ?>
+<?php
+date_default_timezone_set('America/Sao_Paulo');
+$date = date('Y-m-d');
 
+include 'includes/header.php'; ?>
 <div class="d-flex" id="wrapper">
-
   <!-- Sidebar -->
   <?php include 'includes/sidebar.php'; ?>
   <!-- /#sidebar-wrapper -->
-
   <!-- Page Content -->
   <div id="page-content-wrapper">
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <button class="btn btn-light" id="menu-toggle">
         <i class="fas fa-bars"></i>
       </button>
     </nav>
-
     <div class="container-fluid">
       <div class="container">
         <h2 class="mt-4">Cadastre-se</h2>
@@ -54,6 +53,7 @@
                 </div>
               </div>
               <div class="form-group">
+                <input type="hidden" id="date" name="data" value="<?php echo $date; ?>">
                 <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
               </div>
               <div class="form-group">
@@ -67,10 +67,8 @@
     </div>
   </div>
   <!-- /#page-content-wrapper -->
-
 </div>
 <!-- /#wrapper -->
-
 <?php 
   include 'includes/plugins.php'; 
   include 'includes/footer.php';
