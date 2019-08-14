@@ -4,8 +4,8 @@
   $data = date('Y-m-d');
 
   $horaStart = strtotime("10:00:00");
-  $horaEnd = strtotime("12:01:00");
-  $horaShow = strtotime("12:02:00");
+  $horaEnd = strtotime("14:01:00");
+  $horaShow = strtotime("14:02:00");
   $time = strtotime('now');
   //end dates and times
 

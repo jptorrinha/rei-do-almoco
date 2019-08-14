@@ -3,6 +3,7 @@
 
   /* start includes das querys de exibição e votação */
   include 'query/votacao-view.php';
+  include 'query/votacao-wins.php';
   /* end includes das querys de exibição e votação */
 
   include 'includes/header.php';
@@ -59,7 +60,7 @@
     <?php if($time >= $horaShow): ?>
       <div class="container-fluid vencedor">
         <div class="container">
-          <h2 class="mt-4"><i class="fas fa-crown"></i> Rei do Dia</h2>
+          <h2 class="mt-4"><i class="fas fa-crown"></i> Rei do Dia <?php echo date('d/m/y');?></h2>
           <p>Confira quem foi o vencedor da votação de hoje!</p>
           <div class="row">
             <div class="col-md-12">
@@ -67,11 +68,14 @@
                 <tbody>
                   <tr>
                     <td class="img">
-                      <img src="images/avatares/1.png" class="avatar-pool" alt="">
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $winFoto; ?>')"></div>
                     </td>
-                    <td class="name">João da Silva</td>
+                    <td class="name"><?php echo $winNome; ?></td>
+                    <td class="qtde-votos">
+                      <div class="alert alert-success box-votos">Votos: <?php echo $winVotos; ?></div>
+                    </td>
                     <td class="votos">
-                      <button class="btn btn-primary avisar">
+                      <button class="btn btn-primary avisar" value="<?php echo $winId; ?>">
                         <i class="far fa-share-square"></i> Avisar
                       </button>
                     </td>

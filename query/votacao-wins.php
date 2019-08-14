@@ -1,19 +1,24 @@
 <?php
-	//dates and times
-  date_default_timezone_set('America/Sao_Paulo');
-  $data = date('Y-m-d');
-
-  $horaStart = strtotime("10:00:00");
-  $horaEnd = strtotime("12:01:00");
-  $horaShow = strtotime("12:02:00");
-  $time = strtotime('now');
-  //end dates and times
-
   //abre a conexão
   $PDO = db_connect();
 
-  $sqlCandidatos = "SELECT * FROM cadastro WHERE data = '$data' ORDER BY nome ASC";
+  $sqlWins = "
+    SELECT 
+      c.id,
+      c.nome,
+      c.foto,
+      (SELECT count(*) FROM voto v WHERE c.id = v.id_rei) as votos
+    FROM cadastro c
+    ORDER BY votos DESC
+  ";
+  $sqlWin = "SELECT * FROM cadastro WHERE id = :id";
 
-  $candidatos = $PDO->prepare($sqlCandidatos);
-  $candidatos->execute();
-  $contador = $candidatos->rowCount();
+  $wins = $PDO->prepare($sqlWins);
+  $wins->execute();
+  $win = $wins->fetch(PDO::FETCH_ASSOC);
+
+  $winVotos = $win['votos'];
+  $winFoto = $win['foto'];
+  $winNome = $win['nome'];
+  $winId = $win['id'];
+  
