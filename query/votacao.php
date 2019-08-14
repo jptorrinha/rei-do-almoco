@@ -1,19 +1,40 @@
 <?php
-	//dates and times
-  date_default_timezone_set('America/Sao_Paulo');
-  $data = date('Y-m-d');
+ini_set('display_errors', true);
+error_reporting(E_ALL);
 
-  $horaStart = strtotime("10:00:00");
-  $horaEnd = strtotime("12:01:00");
-  $horaShow = strtotime("12:02:00");
-  $time = strtotime('now');
-  //end dates and times
+require '../config/config.php';
 
-  //abre a conexão
-  $PDO = db_connect();
+$sucesso = array(
+  'status' => 'sucesso',
+  'mensagem' => 'Voto computado com sucesso.'
+);
 
-  $sqlCandidatos = "SELECT * FROM cadastro WHERE data = '$data' ORDER BY nome ASC";
+$erro = array(
+  'status' => 'erro',
+  'mensagem' => 'Aconteceu algum coisa ao enviar o seu cadastro, tente novamente!'
+);
 
-  $candidatos = $PDO->prepare($sqlCandidatos);
-  $candidatos->execute();
-  $contador = $candidatos->rowCount();
+$PDO = db_connect();
+
+// pega os dados do formuário
+$id_rei = $_POST['id'];
+
+if(isset($id_rei)){
+
+  // Insere os dados no banco
+  $sql = "INSERT INTO voto( id_rei ) VALUES ( :id_rei )";
+
+  try {
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id_rei', $id_rei);
+
+    if ($stmt->execute()){
+      echo json_encode($sucesso);
+    }else{
+      echo json_encode($erro);
+    }
+  }catch (Exception $e){
+    echo $e->getMessage();
+  }
+}
+?>

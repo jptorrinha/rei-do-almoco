@@ -3,9 +3,15 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <?php if($pagina_atual == 'cadastro.php'): ?>
+
 	<script src="js/plugins/jquery.validate.min.js"></script>
 	<script src="js/plugins/additional-methods.min.js"></script>
 	<script src="js/cadastro.js"></script>
+
+<?php elseif($pagina_atual == 'index.php'): ?>
+
+	<script src="js/votacao.js"></script>
+	<script src="js/plugins/jquery-confirm.min.js"></script>
 <?php endif; ?>
 
 <!-- Menu Toggle Script -->

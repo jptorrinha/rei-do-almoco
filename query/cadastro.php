@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 //date para cadastro
 date_default_timezone_set('America/Sao_Paulo');
-$data = date('Y-m-d');
+$dataAtual = date('Y-m-d');
 
 require '../config/config.php';
 
@@ -41,18 +41,30 @@ $data = $_POST['data'];
 if(isset($nome)){
 
   //consulta se o email já existe no banco
-  $sqlCount = "
-  SELECT * FROM cadastro WHERE email = :email
-  ";
+  $sqlCount = "SELECT * FROM cadastro WHERE email = :email AND data = :data";
   $reis = $PDO->prepare($sqlCount);
   $reis->bindParam(':email', $email);
+  $reis->bindParam(':data', $data);
   $reis->execute();
-  $contador = $reis->rowCount();
+  $rei = $reis->fetch(PDO::FETCH_ASSOC);
 
-  if($contador > 0){
+  /* 
+    =======================================================================
+    Regra de cadastro com apenas um email por dia.
+    Se já existir o email na data atual não pode cadastrar novamente.
+    Caso a data do cadastro seja diferente pode-se executar o cadastro.
+
+    IMPORTANTE: PRECISO TER A INFORMAÇÃO NO BANCO PARA GERAR A VISUALIZAÇÃO 
+    DE VENCEDORES E MENOS AMADOS DA ÚLTIMA SEMANA.
+    =======================================================================
+  */
+
+  /* START REGRA DO CDASTRO */
+  if($email === $rei['email'] && $dataAtual === $rei['data'] ){
     echo json_encode($erro_email);
     exit;
   }
+  /* START REGRA DO CDASTRO */
 
   $nomeImg = "candidato-" . sanitizeString($nome);
 

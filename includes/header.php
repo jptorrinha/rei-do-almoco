@@ -20,6 +20,10 @@
   <!-- Fontawesome core CSS -->
   <link rel="stylesheet" href="css/fontawesome-free-5.10.1-web/css/all.min.css">
 
+  <?php if($pagina_atual == 'index.php'): ?>
+    <link rel="stylesheet" href="css/plugins/jquery-confirm.min.css">
+  <?php endif; ?>
+
   <!-- Custom styles for this template -->
 	<link href="css/simple-sidebar.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">

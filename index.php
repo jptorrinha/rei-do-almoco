@@ -1,7 +1,10 @@
 <?php 
   include 'config/config.php';
-  //includes das querys de exibição e votação
-  include 'query/votacao.php';
+
+  /* start includes das querys de exibição e votação */
+  include 'query/votacao-view.php';
+  /* end includes das querys de exibição e votação */
+
   include 'includes/header.php';
 
 ?>
