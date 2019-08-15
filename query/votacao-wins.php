@@ -11,7 +11,7 @@
       (SELECT count(*) FROM voto v WHERE c.id = v.id_rei) as votos
     FROM cadastro c
     WHERE data = '$data'
-    ORDER BY votos DESC
+    ORDER BY votos DESC LIMIT 1
   ";
 
   $wins = $PDO->prepare($sqlWins);

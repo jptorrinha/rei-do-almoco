@@ -2,7 +2,6 @@
   include 'config/config.php';
   /* start includes das querys de exibição, votação e tratamento de datas */
   include 'query/dates.php';
-
   include 'query/votacao-view.php';
   include 'query/votacao-wins.php';
   include 'query/votacao-last-week.php';
@@ -101,15 +100,18 @@
             <table class="table table-hover">
               <tbody>
                 <?php while ($WinsWeek = $lastWeekMais->fetch(PDO::FETCH_ASSOC)): ?>
+                  <?php
+                    $valid_date_mais = date( 'd/m/Y', strtotime($WinsWeek['dia']));
+                  ?>
                   <tr>
                     <td class="img">
                       <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $WinsWeek['foto']; ?>')"></div>
                     </td>
                     <td><?php echo $WinsWeek['nome']; ?></td>
-                    <td><?php echo $WinsWeek['dia']; ?></td>
+                    <td><?php echo $valid_date_mais; ?></td>
                     <td class="votos">
                       <div class="btn btn-success">
-                        <i class="fas fa-flag"></i> <?php echo $WinsWeek['maximo']; ?>
+                        <i class="fas fa-flag"></i> <?php echo $WinsWeek['votos']; ?>
                       </div>
                     </td>
                   </tr>
@@ -130,15 +132,18 @@
               <tbody>
                 <tbody>
                 <?php while ($DownWeek = $lastWeekDown->fetch(PDO::FETCH_ASSOC)): ?>
+                  <?php
+                    $valid_date_menos = date( 'd/m/Y', strtotime($DownWeek['dia']));
+                  ?>
                   <tr>
                     <td class="img">
                       <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $DownWeek['foto']; ?>')"></div>
                     </td>
-
                     <td><?php echo $DownWeek['nome']; ?></td>
+                    <td><?php echo $valid_date_menos; ?></td>
                   <td class="votos">
                     <div class="btn btn-warning">
-                      <i class="fas fa-flag"></i> <?php echo $DownWeek['minimo']; ?>
+                      <i class="fas fa-flag"></i> <?php echo $DownWeek['votos']; ?>
                     </div>
                   </td>
                   </tr>

@@ -38,8 +38,8 @@ $mensagem = "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'><titl
 $mensagemAltBody = "Parabéns, você foi coroado o Rei do Almoço do dia!!!";
 
 /* Declaração de credencias e host pra disparo de email, nos testes foi usado o Office 365 */
-$userServer = "" // Usuário do servidor SMTP
-$userPassword = "" // Senha do servidor SMTP
+$userServer = ""; // Usuário do servidor SMTP
+$userPassword = ""; // Senha do servidor SMTP
 $serverSMTP = ""; //Servidor SMTP
 
 
