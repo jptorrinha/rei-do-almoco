@@ -92,7 +92,7 @@
         </div>
       </div>
     <?php endif; ?>
-    
+
     <div class="container-fluid">
       <div class="container">
         <h2 class="mt-4">Reis mais amados da última semana</h2>
@@ -106,11 +106,12 @@
                       <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $WinsWeek['foto']; ?>')"></div>
                     </td>
                     <td><?php echo $WinsWeek['nome']; ?></td>
-                  <td class="votos">
-                    <div class="btn btn-success">
-                      <i class="fas fa-flag"></i> <?php echo $WinsWeek['votos']; ?>
-                    </div>
-                  </td>
+                    <td><?php echo $WinsWeek['dia']; ?></td>
+                    <td class="votos">
+                      <div class="btn btn-success">
+                        <i class="fas fa-flag"></i> <?php echo $WinsWeek['maximo']; ?>
+                      </div>
+                    </td>
                   </tr>
                 <?php endwhile; ?>
               </tbody>
@@ -133,10 +134,11 @@
                     <td class="img">
                       <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $DownWeek['foto']; ?>')"></div>
                     </td>
+
                     <td><?php echo $DownWeek['nome']; ?></td>
                   <td class="votos">
                     <div class="btn btn-warning">
-                      <i class="fas fa-flag"></i> <?php echo $DownWeek['votos']; ?>
+                      <i class="fas fa-flag"></i> <?php echo $DownWeek['minimo']; ?>
                     </div>
                   </td>
                   </tr>
