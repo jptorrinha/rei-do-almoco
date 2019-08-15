@@ -11,6 +11,7 @@
 <?php elseif($pagina_atual == 'index.php'): ?>
 
 	<script src="js/votacao.js"></script>
+	<script src="js/avisar.js"></script>
 	<script src="js/plugins/jquery-confirm.min.js"></script>
 <?php endif; ?>
 

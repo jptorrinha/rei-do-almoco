@@ -38,7 +38,7 @@
                       <?php while ($candidato = $candidatos->fetch(PDO::FETCH_ASSOC)): ?>
                       <tr>
                         <td class="img">
-                          <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $candidato['foto']; ?>')"></div>
+                          <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $candidato['foto']; ?>')"></div>
                         </td>
                         <td><?php echo $candidato['nome']; ?></td>
                         <td class="pool">
@@ -73,7 +73,7 @@
                 <tbody>
                   <tr>
                     <td class="img">
-                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $winFoto; ?>')"></div>
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $winFoto; ?>')"></div>
                     </td>
                     <td class="name"><?php echo $winNome; ?></td>
                     <td class="qtde-votos">
@@ -103,7 +103,7 @@
                 <?php while ($WinsWeek = $lastWeekMais->fetch(PDO::FETCH_ASSOC)): ?>
                   <tr>
                     <td class="img">
-                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $WinsWeek['foto']; ?>')"></div>
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $WinsWeek['foto']; ?>')"></div>
                     </td>
                     <td><?php echo $WinsWeek['nome']; ?></td>
                     <td><?php echo $WinsWeek['dia']; ?></td>
@@ -132,7 +132,7 @@
                 <?php while ($DownWeek = $lastWeekDown->fetch(PDO::FETCH_ASSOC)): ?>
                   <tr>
                     <td class="img">
-                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $DownWeek['foto']; ?>')"></div>
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $DownWeek['foto']; ?>')"></div>
                     </td>
 
                     <td><?php echo $DownWeek['nome']; ?></td>

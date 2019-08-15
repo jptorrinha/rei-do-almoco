@@ -27,7 +27,6 @@ $enviado = '';
 $thisPath = dirname($_SERVER['DOCUMENT_ROOT']);
 
 //URL definda da aplicação
-$url = "http://localhost:8888/rei-do-almoco/uploads/";
 $dir = '/htdocs/rei-do-almoco/uploads/';
 
 $PDO = db_connect();
@@ -76,7 +75,7 @@ if(isset($nome)){
     $imagem = $nomeImg . $extensao;
 
     //define o nome do arquivo para URl no Banco de Dados
-    $URL_img = $url . $nomeImg . $extensao; 
+    $URL_img = $nomeImg . $extensao; 
 
     //define o diretorio para onde enviaremos o arquivo
     $diretorio = $thisPath.$dir; 
