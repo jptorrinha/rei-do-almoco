@@ -1,9 +1,11 @@
 <?php 
   include 'config/config.php';
-
+  include 'query/dates.php';
   /* start includes das querys de exibição e votação */
   include 'query/votacao-view.php';
   include 'query/votacao-wins.php';
+  include 'query/votacao-last-week.php';
+  include 'query/votacao-last-week-down.php';
   /* end includes das querys de exibição e votação */
 
   include 'includes/header.php';
@@ -94,39 +96,19 @@
           <div class="col-md-12">
             <table class="table table-hover">
               <tbody>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/1.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>João da Silva</td>
+                <?php while ($WinsWeek = $lastWeekMais->fetch(PDO::FETCH_ASSOC)): ?>
+                  <tr>
+                    <td class="img">
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $WinsWeek['foto']; ?>')"></div>
+                    </td>
+                    <td><?php echo $WinsWeek['nome']; ?></td>
                   <td class="votos">
                     <div class="btn btn-success">
-                      <i class="fas fa-flag"></i> 1000
+                      <i class="fas fa-flag"></i> <?php echo $WinsWeek['votos']; ?>
                     </div>
                   </td>
-                </tr>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/2.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>Maria da Costa</td>
-                  <td class="votos">
-                    <div class="btn btn-success">
-                      <i class="fas fa-flag"></i> 1000
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/3.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>João Oliveira</td>
-                  <td class="votos">
-                    <div class="btn btn-success">
-                      <i class="fas fa-flag"></i> 1000
-                    </div>
-                  </td>
-                </tr>
+                  </tr>
+                <?php endwhile; ?>
               </tbody>
             </table>
           </div>
@@ -141,39 +123,20 @@
           <div class="col-md-12">
             <table class="table table-hover">
               <tbody>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/1.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>João da Silva</td>
+                <tbody>
+                <?php while ($DownWeek = $lastWeekDown->fetch(PDO::FETCH_ASSOC)): ?>
+                  <tr>
+                    <td class="img">
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo $DownWeek['foto']; ?>')"></div>
+                    </td>
+                    <td><?php echo $DownWeek['nome']; ?></td>
                   <td class="votos">
                     <div class="btn btn-warning">
-                      <i class="fas fa-flag"></i> 1000
+                      <i class="fas fa-flag"></i> <?php echo $DownWeek['votos']; ?>
                     </div>
                   </td>
-                </tr>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/2.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>Maria da Costa</td>
-                  <td class="votos">
-                    <div class="btn btn-warning">
-                      <i class="fas fa-flag"></i> 1000
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="img">
-                    <img src="images/avatares/3.png" class="avatar-pool" alt="">
-                  </td>
-                  <td>João Oliveira</td>
-                  <td class="votos">
-                    <div class="btn btn-warning">
-                      <i class="fas fa-flag"></i> 1000
-                    </div>
-                  </td>
-                </tr>
+                  </tr>
+                <?php endwhile; ?>
               </tbody>
             </table>
           </div>

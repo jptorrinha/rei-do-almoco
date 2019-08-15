@@ -1,19 +1,19 @@
 <?php
-	//dates and times
-  date_default_timezone_set('America/Sao_Paulo');
-  $data = date('Y-m-d');
-
-  $horaStart = strtotime("10:00:00");
-  $horaEnd = strtotime("12:01:00");
-  $horaShow = strtotime("12:02:00");
-  $time = strtotime('now');
-  //end dates and times
-
   //abre a conexão
   $PDO = db_connect();
 
-  $sqlCandidatos = "SELECT * FROM cadastro WHERE data = '$data' ORDER BY nome ASC";
+  $sqlMlastWeek = "
+    SELECT
+    c.id,
+    c.nome,
+    c.foto,
+    c.data, 
+    (SELECT count(*) FROM voto v WHERE c.id = v.id_rei) as votos
+    FROM cadastro c WHERE data BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()
+    ORDER BY votos DESC LIMIT 5
+  ";
 
-  $candidatos = $PDO->prepare($sqlCandidatos);
-  $candidatos->execute();
-  $contador = $candidatos->rowCount();
+  $lastWeekMais = $PDO->prepare($sqlMlastWeek);
+  $lastWeekMais->execute();
+  //$WinsWeek = $lastWeekMais->fetch(PDO::FETCH_ASSOC);
+  //$contador = $lastWeekMais->rowCount();
