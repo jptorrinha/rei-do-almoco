@@ -3,15 +3,14 @@
   $PDO = db_connect();
 
   $sqlWins = "
-    SELECT 
-      c.id,
-      c.nome,
-      c.foto,
-      c.data,
-      (SELECT count(*) FROM voto v WHERE c.id = v.id_rei) as votos
-    FROM cadastro c
-    WHERE data = '$data'
-    ORDER BY votos DESC LIMIT 1
+    SELECT t1.dia, t1.id_rei, c.nome, c.foto, MAX(total) AS votos FROM
+    ( SELECT v.id_rei, DATE_FORMAT(v.data,'%Y/%m/%d') AS dia, count(*) AS total
+    FROM voto v 
+    WHERE DATE_FORMAT(data,'%Y/%m/%d')  BETWEEN CURDATE() - INTERVAL 6 DAY AND CURDATE()
+    GROUP BY v.id_rei, DATE_FORMAT(v.data,'%Y/%m/%d') ORDER BY total DESC) AS t1 
+    LEFT JOIN cadastro c on t1.id_rei = c.id
+    GROUP BY t1.dia 
+    ORDER BY dia DESC LIMIT 1
   ";
 
   $wins = $PDO->prepare($sqlWins);
@@ -21,5 +20,5 @@
   $winVotos = $win['votos'];
   $winFoto  = $win['foto'];
   $winNome  = $win['nome'];
-  $winId    = $win['id'];
+  $winId    = $win['id_rei'];
   

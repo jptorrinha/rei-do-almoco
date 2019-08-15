@@ -54,7 +54,7 @@
             </div>
           <?php else: ?>
             <div class="container">
-              <p>Nenhum candidato encontrado!</p>
+              <p>Nenhum candidato cadastrado para a votação de hoje!</p>
             </div>
           <?php endif; ?>
         </div>
