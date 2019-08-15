@@ -34,7 +34,13 @@ $win = $winSend->fetch(PDO::FETCH_ASSOC);
 $nome = $win['nome'];
 $email = $win['email'];
 $assunto = "Você foi o vencedor do dia!!!";
-$mensagem = "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'><title>Vencedor</title></head><body><div><table style='width: 500px;'><tr><td style='text-align: center;'><h1>Parabéns!!!!</h1></td></tr><tr><td style='text-transform: uppercase; text-align: center;' >{$nome}</td></tr><tr><td style='text-align: center;'>Você foi coroado o Rei do Almoço do dia!</td></tr><tr><td style='text-align: center;'>Sua coroação será em breve, aguarde o comunicado do RH.</td></tr></table></div></body></html>"; 
+$mensagem = "<!DOCTYPE html><html lang='pt-BR'><head><meta charset='UTF-8'><title>Vencedor</title></head><body><div><table style='width: 500px;'><tr><td style='text-align: center;'><h1>Parabéns!!!!</h1></td></tr><tr><td style='text-transform: uppercase; text-align: center;' >{$nome}</td></tr><tr><td style='text-align: center;'>Você foi coroado o Rei do Almoço do dia!</td></tr><tr><td style='text-align: center;'>Sua coroação será em breve, aguarde o comunicado do RH.</td></tr></table></div></body></html>";
+$mensagemAltBody = "Parabéns, você foi coroado o Rei do Almoço do dia!!!";
+
+/* Declaração de credencias e host pra disparo de email, nos testes foi usado o Office 365 */
+$userServer = "" // Usuário do servidor SMTP
+$userPassword = "" // Senha do servidor SMTP
+$serverSMTP = ""; //Servidor SMTP
 
 
 /* apenas dispara o envio do formulário caso exista o ID do ganhador */
@@ -44,21 +50,19 @@ if(isset($id)){
 
 	$mail->SMTPDebug = 0;
 	$mail->IsSMTP();
-	$mail->SMTPAuth = true;
-	$mail->SMTPSecure = 'StartTLS';
-	$mail->CharSet  = 'UTF-8';
-	$mail->Host  = "smtp.office365.com";
-	$mail->Port  = '587';
-	$mail->Username = 'evento@gpadrao.com.br'; // Usuário do servidor SMTP
-	$mail->Password = 'GP@@2019#evt@pd!'; // Senha do servidor SMTP
-
-	$mail->From  = "evento@gpadrao.com.br";
-	$mail->FromName  = $assunto;
 	$mail->IsHTML();
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = 'TLS';
+	$mail->CharSet  = 'UTF-8';
+	$mail->Host  = $serverSMTP;
+	$mail->Port  = '587';
+	$mail->Username = $userServer;
+	$mail->Password = $userPassword;
+	$mail->From  = $userServer;
+	$mail->FromName  = $assunto;
 	$mail->Subject  = $assunto;
 	$mail->Body  = $mensagem;
-	$mail->AltBody = "Parabéns, você foi coroado o Rei do Almoço do dia!!!";
-
+	$mail->AltBody = $mensagemAltBody;
 	$mail->AddAddress($email,$nome);
 
 	try{

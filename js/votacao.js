@@ -15,6 +15,13 @@ $(function(){
 				    type: 'green',
 				    typeAnimated: true,
 					});
+				}else{
+					$.alert({
+				    title: 'Ops!',
+				    content: xhr.mensagem,
+				    type: 'red',
+				    typeAnimated: true,
+					});
 				}
 			}
 		});
