@@ -1,7 +1,8 @@
 <?php 
   include 'config/config.php';
+  /* start includes das querys de exibição, votação e tratamento de datas */
   include 'query/dates.php';
-  /* start includes das querys de exibição e votação */
+
   include 'query/votacao-view.php';
   include 'query/votacao-wins.php';
   include 'query/votacao-last-week.php';
@@ -9,12 +10,12 @@
   /* end includes das querys de exibição e votação */
 
   include 'includes/header.php';
-
 ?>
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
   <?php include 'includes/sidebar.php'; ?>
   <!-- /#sidebar-wrapper -->
+
   <!-- Page Content -->
   <div id="page-content-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -22,12 +23,13 @@
         <i class="fas fa-bars"></i>
       </button>
     </nav>
+
     <?php if($time <= $horaShow): ?>
       <?php if($time >= $horaStart && $time <= $horaEnd): ?>
         <div class="container-fluid">
           <?php if($contador > 0): ?>
             <div class="container">
-              <h2 class="mt-4">Votar</h2>
+              <h2 class="mt-4">Candidatos do Dia <?php echo date('d/m/y');?>! </h2>
               <p>Para votar selecione um dos candidagos abaixo e clique em votar</p>
               <div class="row">
                 <div class="col-md-12">
@@ -59,6 +61,7 @@
         </div>
       <?php endif; ?>
     <?php endif; ?>
+
     <?php if($time >= $horaShow): ?>
       <div class="container-fluid vencedor">
         <div class="container">
@@ -89,9 +92,10 @@
         </div>
       </div>
     <?php endif; ?>
+    
     <div class="container-fluid">
       <div class="container">
-        <h2 class="mt-4">Mais votados da última semana</h2>
+        <h2 class="mt-4">Reis mais amados da última semana</h2>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover">
