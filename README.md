@@ -25,16 +25,19 @@ Path do arquivo database/rei_do_almoco.sql
 
 Acesse config/config.php
 
-Altere as linhas: 4, 5, 6 e 7 conforme as especificações da sua conexão com o banco de dados.
+Altere as linhas: 4, 5, 6, 7 e 10 conforme as especificações da sua conexão com o banco de dados.
 
 define('DB_HOST', 'localhost');<br>
 define('DB_USER', 'root');<br>
 define('DB_PASS', 'root');<br>
 define('DB_NAME', 'rei_do_almoco');<br>
 
+Define da URL da aplicação com local das imagens<br>
+define('IMAGEM', 'http://localhost:8888/rei-do-almoco/uploads/');<br>
+
 <b>Configurando o servidor de e-mail para disparar emails de notificação</b>
 
-Acesse query/aviar.php
+Acesse query/avisar.php
 
 Altere as linhas: 41, 42 e 43
 
