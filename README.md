@@ -27,10 +27,10 @@ Acesse config/config.php
 
 Altere as linhas: 4, 5, 6 e 7 conforme as especificações da sua conexão com o banco de dados.
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
-define('DB_NAME', 'rei_do_almoco');
+define('DB_HOST', 'localhost');<br>
+define('DB_USER', 'root');<br>
+define('DB_PASS', 'root');<br>
+define('DB_NAME', 'rei_do_almoco');<br>
 
 <b>Configurando o servidor de e-mail para disparar emails de notificação</b>
 
