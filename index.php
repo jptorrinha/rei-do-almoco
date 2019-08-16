@@ -1,6 +1,6 @@
 <?php 
   include 'config/config.php';
-  
+
   /* start includes das querys de exibição, votação e tratamento de datas */
   include 'query/dates.php';
   include 'query/votacao-view.php';
@@ -30,7 +30,8 @@
           <?php if($contador > 0): ?>
             <div class="container">
               <h2 class="mt-4">Candidatos do Dia <?php echo date('d/m/y');?>! </h2>
-              <p>Para votar selecione um dos candidagos abaixo e clique em votar</p>
+              <h3>Para votar selecione um dos candidagos abaixo e clique em votar</h3>
+              <p>Vote todo dia das 10:00 às 12:00 da manhã para escolher um pretendente ao trono.</p>
               <div class="row">
                 <div class="col-md-12">
                   <table class="table table-hover">
@@ -73,14 +74,14 @@
                 <tbody>
                   <tr>
                     <td class="img">
-                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $winFoto; ?>')"></div>
+                      <div class="img-thumbnail avatar-pool" style="background-image: url('<?php echo IMAGEM; ?><?php echo $vFoto; ?>')"></div>
                     </td>
-                    <td class="name"><?php echo $winNome; ?></td>
+                    <td class="name"><?php echo $vNome; ?></td>
                     <td class="qtde-votos">
-                      <div class="alert alert-success box-votos">Votos: <?php echo $winVotos; ?></div>
+                      <div class="alert alert-success box-votos">Votos: <?php echo $vVotos; ?></div>
                     </td>
                     <td class="votos">
-                      <button class="btn btn-primary avisar" value="<?php echo $winId; ?>">
+                      <button class="btn btn-primary avisar" value="<?php echo $vID; ?>">
                         <i class="far fa-share-square"></i> Avisar
                       </button>
                     </td>

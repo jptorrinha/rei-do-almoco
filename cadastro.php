@@ -1,7 +1,4 @@
 <?php
-date_default_timezone_set('America/Sao_Paulo');
-$date = date('Y-m-d');
-
 include 'includes/header.php'; ?>
 <div class="d-flex" id="wrapper">
   <!-- Sidebar -->
@@ -53,7 +50,6 @@ include 'includes/header.php'; ?>
                 </div>
               </div>
               <div class="form-group">
-                <input type="hidden" id="date" name="data" value="<?php echo $date; ?>">
                 <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
               </div>
               <div class="form-group">

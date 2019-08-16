@@ -2,7 +2,7 @@ SELECT
 c.id,
 c.nome,
 c.foto,
-c.data, 
+v.data, 
 (SELECT count(*) FROM voto v WHERE c.id = v.id_rei) as votos
 FROM cadastro c WHERE data BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()
 ORDER BY votos DESC
@@ -20,7 +20,7 @@ SELECT *,WEEK(data),
 (SELECT * FROM voto WHERE data BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE() ) AS t1 LEFT JOIN cadastro c ON t1.id_rei = c.id
 GROUP BY DATE_FORMAT(t1.data,'%Y/%m/%d')
 
-
+SELECT id_rei, COUNT(*) AS votos FROM voto WHERE DATA(data) = '2019-08-16' GROUP BY id_rei HAVING COUNT(*) > 1 ORDER BY votos DESC;
 
 SELECT t1.dia, t1.nome, Max(total) AS maximo FROM
 (SELECT 
@@ -48,7 +48,7 @@ group by t1.dia) as t2
 group by t2.nome
 
 
-
+UPDATE voto SET data = replace( data, '2019-08-16', '2019-08-15' );
 
 SELECT t1.dia, t1.nome, t1.foto, MAX(total) AS votos FROM
 (SELECT 
@@ -58,7 +58,7 @@ FROM
     LEFT JOIN cadastro c  ON v1.id_rei = c.id 
 GROUP BY 
 	c.nome, DATE_FORMAT(v1.data,'%Y/%m/%d')) AS t1
-GROUP BY t1.dia
+GROUP BY votos ASC
 
 
 SELECT t2.id_rei, t2.nome, t2.foto, count(*) FROM
@@ -71,3 +71,13 @@ LEFT JOIN cadastro c ON t1.id_rei = c.id
 GROUP BY t1.dia 
 ORDER BY dia ASC ) AS t2
 ORDER BY t2.nome limit 1
+
+
+SELECT 
+  c.id,
+  c.nome,
+  c.foto,
+  (SELECT COUNT(*) FROM voto v WHERE c.id = v.id_rei) AS votos
+FROM cadastro AS c
+WHERE DATE(data) = '2018-08-16'
+ORDER BY votos DESC
