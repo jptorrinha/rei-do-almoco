@@ -38,6 +38,6 @@ Acesse query/aviar.php
 
 Altere as linhas: 41, 42 e 43
 
-$userServer = ""; /* Usuário do servidor SMTP email */<br>
-$userPassword = ""; /* Senha do servidor SMTP (senha) */<br>
-$serverSMTP = ""; /* Servidor SMTP */<br>
+$userServer 	= ""; 	Usuário do servidor SMTP email<br>
+$userPassword = ""; 	Senha do servidor SMTP (senha)<br>
+$serverSMTP 	= ""; 	Servidor SMTP<br>
